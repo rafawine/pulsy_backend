@@ -18,7 +18,7 @@ import (
 )
 
 func UploadFileHandler(c *gin.Context) {
-	uuidOwner := c.Request.Header.Get("X-Consumer-Key")
+	uuidOwner := c.Request.Header.Get("x-consumer-custom-id")
 	file, err := c.FormFile("file")
 	if err != nil {
 		message := "file not found"
@@ -106,7 +106,7 @@ func UploadFileHandler(c *gin.Context) {
 }
 
 func DownloadFileHandler(c *gin.Context) {
-	uuidOwner := c.Request.Header.Get("X-Consumer-Key")
+	uuidOwner := c.Request.Header.Get("x-consumer-custom-id")
 	fileUUID := c.Param("uuid")
 
 	metadata, err := getMetadata(fileUUID, uuidOwner)
@@ -180,7 +180,7 @@ func DownloadFileHandler(c *gin.Context) {
 }
 
 func UpdateFileHandler(c *gin.Context) {
-	uuidOwner := c.Request.Header.Get("X-Consumer-Key")
+	uuidOwner := c.Request.Header.Get("x-consumer-custom-id")
 	fileUUID := c.Param("uuid")
 	file, err := c.FormFile("file")
 	if err != nil {
@@ -286,7 +286,7 @@ func UpdateFileHandler(c *gin.Context) {
 }
 
 func DeleteFileHandler(c *gin.Context) {
-	uuidOwner := c.Request.Header.Get("X-Consumer-Key")
+	uuidOwner := c.Request.Header.Get("x-consumer-custom-id")
 	fileUUID := c.Param("uuid")
 
 	metadata, err := getMetadata(fileUUID, uuidOwner)
