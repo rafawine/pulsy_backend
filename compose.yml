@@ -6,8 +6,6 @@ services:
       context: .
       dockerfile: dockerfile
     container_name: pulsy
-    ports:
-      - "${PORT}:4321"
     environment:
       - GIN_MODE=${GIN_MODE}
       - PORT=${PORT}
