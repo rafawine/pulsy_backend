@@ -93,7 +93,7 @@ func ReadMultipleDocs(collection string, conditions []firebase.QueryCondition) (
 		data := doc.Data()
 
 		// Agregar el ID del documento al mapa
-		data["idDoc"] = doc.Ref.ID
+		data["docRefID"] = doc.Ref.ID
 
 		// Agregar al slice de resultados
 		results = append(results, data)

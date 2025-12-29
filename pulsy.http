@@ -1,7 +1,9 @@
 @host = http://0:4321
+
 @uuidOwner = 96c1e6cf-8b44-4366-b35c-75f2303076fc
-@uuid = c390ce2f
-# c390ce2f-dfc7-42dc-af6b-424c30e9925f
+@uuidOwner = f486ac83-e999-456e-9505-5ceb234016f2
+
+@uuid = 3577c3e1-9d18-45f0-a0aa-c9c4af4c81a3
 
 ###
 
@@ -13,7 +15,7 @@ GET /health
 
 # @name Upload File
 # @description Upload File to Storage
-POST /file
+POST /files
 x-consumer-custom-id: {{uuidOwner}}
 Content-Type: multipart/form-data; boundary=WebKitFormBoundary
 
@@ -27,14 +29,14 @@ Content-Disposition: form-data; name="file"; filename="share.txt"
 
 # @name Download File
 # @description Download File from Storage
-GET /file/{{uuid}}
+GET /files/{{uuid}}
 x-consumer-custom-id: {{uuidOwner}}
 
 ###
 
 # @name Update File
 # @description Update File to Storage
-PUT /file/{{uuid}}
+PUT /files/{{uuid}}
 x-consumer-custom-id: {{uuidOwner}}
 Content-Type: multipart/form-data; boundary=WebKitFormBoundary
 
@@ -48,7 +50,21 @@ Content-Disposition: form-data; name="file"; filename="share.txt"
 
 # @name Delete File
 # @description Delete File from Storage
-DELETE /file/{{uuid}}
+DELETE /files/{{uuid}}
+x-consumer-custom-id: {{uuidOwner}}
+
+###
+
+# @name Get list of metadata
+# @description Get list of metadata of all files
+GET /files
+x-consumer-custom-id: {{uuidOwner}}
+
+###
+
+# @name Get metadata
+# @description Get metadata of specific file
+GET /files/{{uuid}}/metadata
 x-consumer-custom-id: {{uuidOwner}}
 
 ###
